@@ -27,7 +27,7 @@ class MergeArrays {
         while (j < b.length) {
             c[k++] = b[j++];
         }
-        Arrays.sort(c); */
+        Arrays.sort(c); */ // Using Arrays.sort();
         System.out.println(Arrays.toString(c));
     }
 
