@@ -1,8 +1,9 @@
+// @author Sai Dharshak
 import java.util.Arrays;
 
 class ThreeSum {
     public static void main(String[] args) {
-        int[] a = {30, -40, -20, -10, 40, 0, 10, 5};
+        int[] a = {0,0,1};
         // int[] a = {0, -1, 2, -3, 1};
 
         Arrays.sort(a);

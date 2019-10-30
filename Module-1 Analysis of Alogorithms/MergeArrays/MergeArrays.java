@@ -1,3 +1,4 @@
+// @author Sai Dharshak
 import java.util.Arrays;
 class MergeArrays {
     public static void main(String[] args) {
