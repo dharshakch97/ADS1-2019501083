@@ -1,0 +1,3 @@
+Which method runs faster for an array with all keys identical, basic selection sort or basic insertion sort?
+The basic insertion sort is quicker compared to basic selection sort because, in insertion sort number of comparisons are less. 
+The complexity of insertion sort is O(1) whereas, selection sort it is O(n^2).
