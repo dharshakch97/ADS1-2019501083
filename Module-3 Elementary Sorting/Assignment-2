@@ -1,0 +1,3 @@
+Which method runs faster for an array in reverse order, basic selection sort or basic insertion sort?
+For an array in reverse order, the selection sort runs faster when compared to insertion sort because, insertion sort take more exchanges 
+than selection sort.
