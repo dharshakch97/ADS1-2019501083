@@ -7,6 +7,7 @@ class MergeArrays {
     /**
      * @param a integer sorted array
      * @param b integer sorted array
+     * Merges two sorted arrays into another array
      */
     public int[] merge(int[] a, int[] b) {
         int i = 0, j = 0,  k = 0;
