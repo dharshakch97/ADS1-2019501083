@@ -9,7 +9,7 @@ class Solution {
 	public static String isMatching(String str) {
 		// fill you code Here
 		// Create object for stack
-		Stack stack = new Stack();
+		Stack stack = new Stack(); // Creating object for stack
 		for (int i = 0; i < str.length(); i++) {
 			char s =  str.charAt(i);
 			// If open parentheses, push into stack
@@ -17,13 +17,15 @@ class Solution {
 				stack.push(s);
 			/* checks with head of stack and if hea value equals
 			with open braces then pops the head value*/
-			else if (stack.top != null && (((s == ']' && stack.getTop() == '[') ||
-					(s == ')' && stack.getTop() == '(') || (s == '}' && stack.getTop() == '{'))))
+			else if (stack.top != null) {
+				if ((s == ']' && stack.getTop() == '[') ||
+					(s == ')' && stack.getTop() == '(') || 
+					(s == '}' && stack.getTop() == '{'))
 						stack.pop();
-			else {
-				return "NO";
 			}
-			
+			// Or else, return "NO"
+			else
+				return "NO";	
 		}
 		// if stack top is null, return "YES" or else return "NO"
 		if (stack.top == null)
