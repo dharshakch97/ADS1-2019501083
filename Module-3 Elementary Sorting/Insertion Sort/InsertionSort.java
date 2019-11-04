@@ -4,7 +4,7 @@ class InsertionSort {
         
         int[] a = {5, 4, 9, 12, 10, 20, 5, 1};
 
-        for (int i = 0; i < a.length; i++) {
+        for (int i = 1; i < a.length; i++) {
             int f = a[i];
             int j = i - 1;
 
