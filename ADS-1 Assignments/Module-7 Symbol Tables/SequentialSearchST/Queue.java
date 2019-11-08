@@ -3,18 +3,18 @@ import java.util.*;
  *  @author Dharshak
  */
 public class Queue<Item> implements Iterable<Item> {
-    private Node<Item> first;    // beginning of queue
-    private Node<Item> last;     // end of queue
-    private int n;               // number of elements on queue
+    private Node<Item> first; // first in queue
+    private Node<Item> last; // last in queue
+    private int n; // queue size
 
     // helper linked list class
     private static class Node<Item> {
-        private Item item;
-        private Node<Item> next;
+        private Item item; // Node item
+        private Node<Item> next; // Node type next item
     }
 
     /**
-     * Initializes an empty queue.
+     * Initializes Queue using constructor
      */
     public Queue() {
         first = null;
@@ -22,33 +22,16 @@ public class Queue<Item> implements Iterable<Item> {
         n = 0;
     }
 
-    /**
-     * Returns true if this queue is empty.
-     *
-     * @return {@code true} if this queue is empty; {@code false} otherwise
-     */
     public boolean isEmpty() {
-        return first == null;
+        return first == null;  //if this queue is empty, else return false
     }
 
-    /**
-     * Returns the number of items in this queue.
-     *
-     * @return the number of items in this queue
-     */
     public int size() {
-        return n;
+        return n; // return number of items in queue
     }
 
-    /**
-     * Returns the item least recently added to this queue.
-     *
-     * @return the item least recently added to this queue
-     * @throws NoSuchElementException if this queue is empty
-     */
     public Item peek() {
-        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
-        return first.item;
+        return first.item; // returns first item in the queue
     }
 
     /**
@@ -61,8 +44,10 @@ public class Queue<Item> implements Iterable<Item> {
         last = new Node<Item>();
         last.item = item;
         last.next = null;
-        if (isEmpty()) first = last;
-        else           oldlast.next = last;
+        if (isEmpty()) 
+            first = last;
+        else
+            oldlast.next = last;
         n++;
     }
 
@@ -70,14 +55,13 @@ public class Queue<Item> implements Iterable<Item> {
      * Removes and returns the item on this queue that was least recently added.
      *
      * @return the item on this queue that was least recently added
-     * @throws NoSuchElementException if this queue is empty
      */
     public Item dequeue() {
-        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
         Item item = first.item;
         first = first.next;
         n--;
-        if (isEmpty()) last = null;   // to avoid loitering
+        if (isEmpty()) 
+            last = null;   // to avoid loitering
         return item;
     }
 
@@ -112,8 +96,8 @@ public class Queue<Item> implements Iterable<Item> {
             current = first;
         }
 
-        public boolean hasNext()  { return current != null;                     }
-        public void remove()      { throw new UnsupportedOperationException();  }
+        public boolean hasNext()  
+            return current != null;
 
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
