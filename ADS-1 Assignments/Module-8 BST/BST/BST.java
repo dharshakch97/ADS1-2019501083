@@ -16,7 +16,7 @@ class BST<Key extends Comparable <Key>,Value> // Key extends Comparable<Key>
      */
     private class Node {
         private Key key;          
-        private Value val;         
+        private Value value;         
         private Node left, right;  
         private int size;
         /**
@@ -27,7 +27,7 @@ class BST<Key extends Comparable <Key>,Value> // Key extends Comparable<Key>
          */
         public Node(Key key, Value val, int size) {
             this.key = key;
-            this.val = val;
+            this.value = val;
             this.size = size;
         }
     }
@@ -85,9 +85,12 @@ class BST<Key extends Comparable <Key>,Value> // Key extends Comparable<Key>
     public  Value get(Node x, Key key) {
         if (x == null) return null;
         int cmp = key.compareTo(x.key);
-        if      (cmp < 0) return get(x.left, key);
-        else if (cmp > 0) return get(x.right, key);
-        else              return x.val;
+        if (cmp < 0) 
+            return get(x.left, key);
+        else if (cmp > 0) 
+            return get(x.right, key);
+        else
+            return x.value;
     }
     /**
      * put() is used to add a key-value to the BST ST, if key not exists
@@ -117,12 +120,16 @@ class BST<Key extends Comparable <Key>,Value> // Key extends Comparable<Key>
      */
 
     private  Node put(Node x, Key key, Value val) {
-        if (x == null) return new Node(key, val, 1);
+        if (x == null) 
+            return new Node(key, val, 1);
         int cmp = key.compareTo(x.key);
-        if      (cmp < 0) x.left  = put(x.left,  key, val);
-        else if (cmp > 0) x.right = put(x.right, key, val);
-        else              x.val   = val;
-        x.size = 1 + size(x.left) + size(x.right);
+            if (cmp < 0) 
+                x.left  = put(x.left,  key, val);
+            else if (cmp > 0) 
+                x.right = put(x.right, key, val);
+            else
+                x.value   = val;
+            x.size = 1 + size(x.left) + size(x.right);
         return x;
     }
 
@@ -134,14 +141,15 @@ class BST<Key extends Comparable <Key>,Value> // Key extends Comparable<Key>
     public void deleteMin() {
         root = deleteMin(root);
     }
+    
     /**
      * delMin(Node x) checks for node to delete if found, delete the key and it's value from BST ST
      * @param x node.
      * deleteMin() complexity is O(n).
      */
-
     private Node deleteMin(Node x) {
-        if (x.left == null) return x.right;
+        if (x.left == null) 
+            return x.right;
         x.left = deleteMin(x.left);
         x.size = size(x.left) + size(x.right) + 1;
         return x;
@@ -154,14 +162,15 @@ class BST<Key extends Comparable <Key>,Value> // Key extends Comparable<Key>
     public void deleteMax() {
         root = deleteMax(root);
     }
+    
     /**
      * delMin(Node x) checks for node to delete if found, delete the key and it's value from BST ST
      * @param x node.
      * deleteMax() complexity is O(n).
      */
-
     private Node deleteMax(Node x) {
-        if (x.right == null) return x.left;
+        if (x.right == null) 
+            return x.left;
         x.right = deleteMax(x.right);
         x.size = size(x.left) + size(x.right) + 1;
         return x;
@@ -175,13 +184,13 @@ class BST<Key extends Comparable <Key>,Value> // Key extends Comparable<Key>
     public void delete(Key key) {
         root = delete(root, key);
     }
+    
     /**
      * delete(Node x, Key key) removes the Node x of required key and it's value from the BST ST
      * @param x node.
      * @param key key.
      * delete() complexity is O(n).
      */
-
     private Node delete(Node x, Key key) {
         if (x == null) return null;
         int cmp = key.compareTo(x.key);
@@ -225,12 +234,12 @@ class BST<Key extends Comparable <Key>,Value> // Key extends Comparable<Key>
     public Key max() {
         return max(root).key;
     }
+    
     /**
      * max() returns max key from the BST ST 
      * @param x node.
      * Complexity:O(n).
      */
-
     private Node max(Node x) {
         if (x.right == null) return x;
         else                 return max(x.right);
@@ -246,13 +255,13 @@ class BST<Key extends Comparable <Key>,Value> // Key extends Comparable<Key>
         if (x == null) return null;
         else return x.key;
     }
+    
     /**
      * floor(Nodex, Key k) return the key from the BST ST below to the given key
      * @param x node
      * @param key key
      * floor(Node x, Key k) complexity is O(n).
      */
-
     private Node floor(Node x, Key key) {
         if (x == null) return null;
         int cmp = key.compareTo(x.key);
