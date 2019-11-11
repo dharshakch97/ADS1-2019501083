@@ -96,8 +96,9 @@ public class Queue<Item> implements Iterable<Item> {
             current = first;
         }
 
-        public boolean hasNext()  
+        public boolean hasNext() {
             return current != null;
+        }
 
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
