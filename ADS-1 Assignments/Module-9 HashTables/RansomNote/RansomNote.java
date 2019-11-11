@@ -1,3 +1,6 @@
+/**
+ * @author Dharshak
+ */
 import java.io.*;
 import java.util.*;
 import java.text.*;
@@ -6,30 +9,45 @@ import java.util.regex.*;
 
 public class RansomNote {
 
+    /**
+     * RansomNote Class
+     * @param magazine magazine string array
+     * @param ransom ransom string array
+     */
     public static boolean canMake(String[] magazine, String[] ransom){
-        
+        // HashMap for magazine string array
         Map<String, Integer> magazineHashMap = new HashMap<String, Integer>();
+        // HashMap for ransom string array
         Map<String, Integer> ransomHashMap = new HashMap<String, Integer>();
 
         for(String w: magazine){
-            if (!magazineHashMap.containsKey(w)) 
+            // if magazine hashmap not contains key of input 'w', put 'w'
+            if (!magazineHashMap.containsKey(w))
                 magazineHashMap.put(w, 0);
+            // else, update 'w' + 1
             magazineHashMap.put(w, magazineHashMap.get(w) + 1);
         }
 
-        for(String w: ransom){
+        for(String w: ransom) {
+            // if ransom hashmap not contains key of input 'w', put 'w'
             if (!ransomHashMap.containsKey(w)) 
                 ransomHashMap.put(w, 0);
+            // else, update 'w' + 1
             ransomHashMap.put(w, ransomHashMap.get(w) + 1);
         }
 
-        for(String key: ransomHashMap.keySet()){
+        // iterate ransomHashMap keySet
+        for(String key: ransomHashMap.keySet()) {
+            // if magazineHashMap not contains key, return 'False'
             if (!magazineHashMap.containsKey(key)) 
                 return false;
+            // if magazineHashMap contains key
             int needed = ransomHashMap.get(key);
+            // get(key) < needed, return 'False'
             if (magazineHashMap.get(key) < needed) 
                 return false;
         }
+        // return 'True'
         return true;
     }
 
