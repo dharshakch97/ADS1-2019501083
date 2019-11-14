@@ -63,12 +63,12 @@ class FarthestPair {
         Double max = a[0]; // Make first element as maximum element
     
         // Call 'lesser' method to find minimum element in the array
-        Double lessElem = lesser(a,n,min);
+        // Double lessElem = lesser(a,n,min);
         // Call 'greater' method to find maximum element in the array
-        Double greatElem = greater(a,n,max);
+        // Double greatElem = greater(a,n,max);
         // Double d = greatElem - lessElem;
         // System.out.println(d);
-        System.out.println("Farthest pair is: (" + greatElem + "," + lessElem + ")");
+        System.out.println("Farthest pair is: (" + greater(a,n,max) + "," + lesser(a,n,min) + ")");
        
     }
 }
