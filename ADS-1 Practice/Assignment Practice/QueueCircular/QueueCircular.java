@@ -62,7 +62,7 @@ class QueueCircular {
             n--;
             return NodeData;
         }
-        return 0;
+        return -1;
     }
 
     public static void main(String[] args) {
@@ -78,5 +78,9 @@ class QueueCircular {
         // removing the first two elements from the queue      
         System.out.println("Dequeueing..." + qc.dequeue());
         System.out.println("Dequeueing..." + qc.dequeue());
+        System.out.println("Dequeueing..." + qc.dequeue());
+        System.out.println("Dequeueing..." + qc.dequeue());
+        System.out.println("Dequeueing..." + qc.dequeue());
+
     }
 }
