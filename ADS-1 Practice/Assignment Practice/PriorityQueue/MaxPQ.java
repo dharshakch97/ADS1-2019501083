@@ -2,11 +2,11 @@
  * @author Dharshak
  */
 import java.util.*;
-class MaxPQ<Key> {
+class MaxPQ {
 
-	int[] pqArray; // create int[] array
+	int[] pqArray; // create Key[] array
 	int size;
-	// Comparator<int> comparator; // comparator for int
+	// Comparator<Key> comparator; // comparator for Key
 
 	public MaxPQ(int s) {
 		pqArray = (int[]) new int[s + 1]; // constructor for MaxPQ, declaring array size
@@ -37,9 +37,8 @@ class MaxPQ<Key> {
 	}
 	
 	public boolean min(int i, int j) {
-		if (pqArray[i] > pqArray[j]) {
+		if (pqArray[i] < pqArray[j])
 			return true;
-		}
 		return false;
 	}
 	
@@ -55,7 +54,7 @@ class MaxPQ<Key> {
 		int max = pqArray[1];
 		swap(1, size--);
 		sink(1);
-		pqArray[size + 1] = 0; // after sinking, make last element as 0
+		pqArray[size + 1] = 0; // after sinking, make last element as null
 		if ((size > 0) && (size == (pqArray.length - 1) / 4)) {
 			resize(pqArray.length / 2); // resize, if pqArray length is 1/4th occupied
 		}
@@ -99,6 +98,10 @@ class MaxPQ<Key> {
 		int temp = pqArray[i];
 		pqArray[i] = pqArray[j];
 		pqArray[j] = temp;
+	}
+
+	public int[] returnArray() {
+		return pqArray;
 	}
 
 	public String toString() {

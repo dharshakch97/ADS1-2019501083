@@ -52,7 +52,7 @@ class MinPQ {
 		int min = pqArray[1];
 		swap(1, size--);
 		sink(1); // sink called
-		pqArray[size + 1] = 0; // after sinking, make last element as 0
+		pqArray[size + 1] = 0; // after sinking, make last element as null
 		if ((size > 0) && (size == (pqArray.length - 1) / 4))
 			resize(pqArray.length / 2); // resize, if pqArray length is 1/4th occupied
 		return min; //return the min deleted element 
@@ -101,6 +101,10 @@ class MinPQ {
 		pqArray[j] = temp;
 	}
 
+	public int[] returnArray() {
+		return pqArray;
+	}
+	
 	public String toString() {
 		String s = "";
 		for (int i = 1; i < pqArray.length; i++) {
