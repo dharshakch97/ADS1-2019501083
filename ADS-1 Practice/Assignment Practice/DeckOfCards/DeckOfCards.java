@@ -1,9 +1,9 @@
 import java.util.*;
 class Card implements Comparable<Card> {
     String suit_value;
-    String value;
+    int value;
 
-    Card(String s, String v) {
+    Card(String s, int v) {
         suit_value = s;
         value = v;
     }
@@ -17,14 +17,12 @@ class Card implements Comparable<Card> {
             return 1;
         else if (this.suit_value.compareTo(t.suit_value) > 0)
             return -1;
-        else {
-            if (this.value.compareTo(t.value) < 0)
-                return 1;
-            else if (this.value.compareTo(t.value) > 0)
+        else if (this.value < t.value)
                 return -1;
-                else return 0;
+        else if (this.value > t.value)
+                return 1;
+        else return 0;
         }
-    }
 }
 
 class DeckOfCards {
@@ -43,21 +41,18 @@ class DeckOfCards {
 
     public Card[] cards_sort(Card[] deck) {
         for (int i = 0; i < deck.length; i++) {
-            int min = i;
-            for (int j = i + 1; j < deck.length; j++) {
-                if (deck[j].compareTo(deck[min]) == 1)
-                    min = j;
+            for (int j = i ; j > 0 && deck[j].compareTo(deck[j - 1]) < 0; j--) {
+                Card t = deck[j];
+                deck[j] = deck[j - 1];
+                deck[j - 1] = t;
             }
-            Card t = deck[i];
-            deck[i] = deck[min];
-            deck[min] = t;
         }
         return deck;
     }
     public static void main(String[] args) {
 
         String[] suits = {"spade","heart","clubs","diamond"};
-        String[] values = {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
+        int[] values = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
         Card[] deck = new Card[52];
 
         DeckOfCards dc = new DeckOfCards();
