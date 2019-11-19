@@ -60,12 +60,8 @@ class BinarySearchST<Key extends Comparable<Key>, Value> {
      * @param value input value
      */
     public void put(Key key, Value value) {
-        // if value is null, delete the key
-        if (value == null) {
-            delete(key); // delete(key)
-            return;
-        }
-        if (n == 0) { // if size is 0, then insert at 0 position
+        // if size is 0, then insert at 0 position, it's complexity is O(1) - constant time
+        if (n == 0) {
             keys[n] = key;
             values[n] = value;
             n++; // increment size
@@ -77,6 +73,7 @@ class BinarySearchST<Key extends Comparable<Key>, Value> {
             /* if 'key' to insert is greater than last element in the array,
             then insert at 'n' position in the array*/
             if (key.compareTo(keys[n - 1]) > 0) {
+                // insert at last position, it's complexity is O(1) - constant time
                 keys[n] = key;
                 values[n] = value;
             }
@@ -118,50 +115,13 @@ class BinarySearchST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * @param key input key
-     * find the index of the 'key' value and 
-     * shift keys[j + 1] to keys[j] (shift left wards)
-     * So, the key at particular index is removed
-     * And also, decrement 'n' and keys[n] = null, values[n] = null
-     */
-    public void delete(Key key) {
-        int i = rank(key); // find 'rank' for key
-
-        for (int j = i; j < n - 1; j++) {
-            // shift all the elements from i to n - 1 leftwards
-            keys[j] = keys[j + 1];
-            values[j] = values[j + 1];
-        }
-        n--; // decrement 'n'
-        // make last index values 'null'
-        keys[n] = null; 
-        values[n] = null;
-    }
-
-    public void deleteMin() {
-        delete(min()); // delete min element
-    }
-
-    public void deleteMax() {
-        delete(max()); // delete max element
-    }
-
-    public Key max() {
-        return keys[n - 1]; // get max element
-    }
-
-    public Key min() {
-        return keys[0]; // get min element
-    }
-
-    /**
      * Add keys from key array to String 'res'
      * and return 'res'
      */
-    public String keys() {
+    public String KeyVal() {
         String res = "";
         for (int i = 0; i < n; i++) {
-            res += keys[i] + " ";
+            res += keys[i] + " " + values[i] + "\n";
         }
         return res;
     }
