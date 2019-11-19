@@ -16,9 +16,6 @@ class PQ {
         for (int i = 0; i < N; i++)
             a[i] = scan.nextInt();
 
-        // System.out.println(Arrays.toString(a));
-
-        MaxPQ maxpq = new MaxPQ(N); // object creation for MaxPQ
         MinPQ minpq = new MinPQ(N); // object creation for MinPQ
 
         // input K value that 'K' elements to be in the MinPQ after delete the N - K elements
@@ -28,35 +25,25 @@ class PQ {
         // inserting N elements to MAxPQ and MinPQ
         for (int i = 0; i < N; i++) {
             minpq.insert(a[i]);
-            maxpq.insert(a[i]);
         }
-        // System.out.println(maxpq.toString());
-
-        // for (int i = 0; i < (n - k); i++)
-        //     minpq.delMin();
-
-        // System.out.println(minpq.toString());
-
 
         // Difference of 'N' and 'K'
         int diff = N - K;
-
         for (int i = 1; i <= diff; i++) {
-        // System.out.println(maxpq.getMax());
             minpq.delMin(); // delete N - K elements from MinPQ
         }
-        // System.out.println(minpq.toString());
-        // System.out.println(maxpq.toString());
-
-        int[] MinArray = maxpq.returnArray(); // return MinPQ array
-        int[] MaxArray = maxpq.returnArray(); // return MaxPQ array
-
+        
+        int[] minArray = minpq.returnArray(); // return the remaining elements in minpq array
         String max = "";
         String min = "";
-        for (int i = 0; i < K; i++) {
-            max += MinArray[i] + " ";
-            min += MaxArray[i] + " ";
+        for (int i = 1; i <= K; i++) {
+            // adding minArray elements to 'min' String i.e., K largest elements
+            min += minArray[i] + " "; 
         }
-        System.out.println(max + " " + min); 
+        /* Adding N elements to the 'minpq' and after to find 'K' largest elements in minpq.
+        In order to do find that, remove (or) delete N - K elements from 'minpq'
+        So, the remaining 'K' elements are the largest because the elements satisfy the MinPQ Heap 
+        property. */
+        System.out.println("K largest elements are: " + min);
     }
 }
